@@ -1,0 +1,163 @@
+/* Justice Path - React App Styles */
+:root {
+  --royal-blue: #2F5DFF;
+  --emerald-green: #3DDC97;
+  --soft-white: #F8F9FA;
+  --dark-text: #2C3E50;
+  --light-gray: #ECF0F1;
+  --border-color: #E1E8ED;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--dark-text);
+  background-color: var(--soft-white);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Buttons */
+.btn-primary, .btn-secondary, .btn-outline {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: var(--royal-blue);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #1e4ae6;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: var(--emerald-green);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: #2bc77a;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--royal-blue);
+  border: 2px solid var(--royal-blue);
+}
+
+.btn-outline:hover {
+  background: var(--royal-blue);
+  color: white;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, var(--royal-blue), var(--emerald-green));
+  color: white;
+  padding: 150px 0 100px;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Cards */
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Grid Layouts */
+.grid {
+  display: grid;
+  gap: 30px;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Page Hero */
+.page-hero {
+  background: linear-gradient(135deg, var(--royal-blue), var(--emerald-green));
+  color: white;
+  padding: 120px 0 80px;
+  text-align: center;
+  margin-top: 70px;
+}
+
+.page-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.page-hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

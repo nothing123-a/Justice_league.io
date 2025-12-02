@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lawyers - Justice Path</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-building"></i>
+                <span>Justice Path</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="cases.html" class="nav-link">Cases</a>
+                <a href="lawyers.html" class="nav-link active">Lawyers</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="login.html" id="loginBtn" class="btn-primary">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-hero">
+        <div class="hero-content">
+            <h1 class="animate-fade-in">Expert Real Estate Lawyers</h1>
+            <p class="animate-slide-up">Connect with qualified legal professionals specialized in real estate law</p>
+        </div>
+    </section>
+
+    <section class="lawyers-page">
+        <div class="container">
+            <div class="lawyers-filters animate-slide-down">
+                <select id="specializationFilter">
+                    <option value="">All Specializations</option>
+                    <option value="property-law">Property Law</option>
+                    <option value="contract-disputes">Contract Disputes</option>
+                    <option value="zoning">Zoning Issues</option>
+                    <option value="commercial-real-estate">Commercial Real Estate</option>
+                    <option value="residential-real-estate">Residential Real Estate</option>
+                    <option value="landlord-tenant">Landlord-Tenant Law</option>
+                </select>
+                <select id="experienceFilter">
+                    <option value="">All Experience Levels</option>
+                    <option value="0-5">0-5 years</option>
+                    <option value="5-10">5-10 years</option>
+                    <option value="10-15">10-15 years</option>
+                    <option value="15+">15+ years</option>
+                </select>
+                <select id="ratingFilter">
+                    <option value="">All Ratings</option>
+                    <option value="4.5">4.5+ Stars</option>
+                    <option value="4.0">4.0+ Stars</option>
+                    <option value="3.5">3.5+ Stars</option>
+                </select>
+            </div>
+
+            <div class="lawyers-stats animate-fade-in">
+                <div class="stat-item">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Active Lawyers: <strong id="activeLawyers">0</strong></span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-star"></i>
+                    <span>Avg Rating: <strong>4.7/5</strong></span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-certificate"></i>
+                    <span>Verified: <strong>100%</strong></span>
+                </div>
+            </div>
+
+            <div id="lawyersList" class="lawyers-grid animate-stagger"></div>
+
+            <div class="lawyer-cta animate-bounce-in">
+                <h3>Are you a Real Estate Lawyer?</h3>
+                <p>Join our platform and connect with brokerage companies needing legal expertise</p>
+                <button class="btn-primary glow-animation" onclick="showRegistrationModal('lawyer')">
+                    <i class="fas fa-user-plus"></i> Join as Lawyer
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div id="lawyerModal" class="modal">
+        <div class="modal-content lawyer-modal animate-scale-in">
+            <span class="close">&times;</span>
+            <div id="lawyerDetails"></div>
+        </div>
+    </div>
+
+    <div id="chatbot" class="chatbot-widget">
+        <div class="chatbot-toggle" onclick="toggleChatbot()">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="chatbot-container">
+            <div class="chatbot-header">
+                <i class="fas fa-robot"></i>
+                <span>Legal Assistant</span>
+                <button onclick="toggleChatbot()" class="close-chat">×</button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages"></div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Ask me anything...">
+                <button onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+</html>

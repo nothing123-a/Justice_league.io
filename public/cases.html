@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cases - Justice Path</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/enhanced-chatbot.css">
+    <link rel="stylesheet" href="css/features.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-building"></i>
+                <span>Justice Path</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="cases.html" class="nav-link active">Cases</a>
+                <a href="lawyers.html" class="nav-link">Lawyers</a>
+                <a href="pricing.html" class="nav-link">Pricing</a>
+                <a href="login.html" id="loginBtn" class="btn-primary">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-hero">
+        <div class="hero-content">
+            <h1 class="animate-fade-in">Legal Cases Marketplace</h1>
+            <p class="animate-slide-up">Find and resolve real estate legal matters efficiently</p>
+        </div>
+    </section>
+
+    <section class="cases-page">
+        <div class="container">
+            <div class="cases-header animate-slide-down">
+                <div class="case-filters">
+                    <select id="categoryFilter">
+                        <option value="">All Categories</option>
+                        <option value="property-dispute">Property Disputes</option>
+                        <option value="contract-issue">Contract Issues</option>
+                        <option value="zoning-problem">Zoning Problems</option>
+                        <option value="title-issue">Title Issues</option>
+                        <option value="lease-dispute">Lease Disputes</option>
+                        <option value="environmental-law">Environmental Law</option>
+                        <option value="real-estate-finance">Real Estate Finance</option>
+                    </select>
+                    <select id="priorityFilter">
+                        <option value="">All Priorities</option>
+                        <option value="urgent">Urgent</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                    <input type="text" id="searchFilter" placeholder="Search cases...">
+                </div>
+                <div class="feature-buttons">
+                    <button id="postCaseBtn" class="btn-primary pulse-animation">
+                        <i class="fas fa-plus"></i> Post New Case
+                    </button>
+                    <button class="feature-btn" onclick="openDocumentManager()">
+                        <i class="fas fa-file-upload"></i> Manage Documents
+                    </button>
+                    <button class="feature-btn" onclick="openCaseTracking()">
+                        <i class="fas fa-chart-line"></i> Track Progress
+                    </button>
+                    <button class="feature-btn" onclick="openVideoConsultation()">
+                        <i class="fas fa-video"></i> Schedule Call
+                    </button>
+                </div>
+            </div>
+
+            <div class="cases-stats animate-fade-in">
+                <div class="stat-item">
+                    <i class="fas fa-folder-open"></i>
+                    <span>Active Cases: <strong id="activeCases">0</strong></span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Avg Response: <strong>2 hours</strong></span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Success Rate: <strong>95%</strong></span>
+                </div>
+            </div>
+
+            <div id="casesList" class="cases-grid animate-stagger"></div>
+        </div>
+    </section>
+
+    <div id="caseModal" class="modal">
+        <div class="modal-content case-modal animate-scale-in">
+            <span class="close">&times;</span>
+            <h3>Post New Real Estate Case</h3>
+            <form id="caseForm">
+                <input type="text" id="caseTitle" placeholder="Case Title" required>
+                <textarea id="caseDescription" placeholder="Describe your legal issue in detail..." required></textarea>
+                
+                <select id="caseCategory" required>
+                    <option value="">Select Category</option>
+                    <option value="property-dispute">Property Dispute</option>
+                    <option value="contract-issue">Contract Issue</option>
+                    <option value="zoning-problem">Zoning Problem</option>
+                    <option value="title-issue">Title Issue</option>
+                    <option value="lease-dispute">Lease Dispute</option>
+                    <option value="closing-issue">Closing Issue</option>
+                </select>
+                
+                <select id="casePriority">
+                    <option value="medium">Medium Priority</option>
+                    <option value="low">Low Priority</option>
+                    <option value="high">High Priority</option>
+                    <option value="urgent">Urgent</option>
+                </select>
+                
+                <div class="budget-section">
+                    <h4>Budget Range</h4>
+                    <div class="budget-inputs">
+                        <input type="number" id="budgetMin" placeholder="Min ($)">
+                        <input type="number" id="budgetMax" placeholder="Max ($)">
+                    </div>
+                </div>
+                
+                <div class="property-section">
+                    <h4>Property Details</h4>
+                    <input type="text" id="propertyAddress" placeholder="Property Address">
+                    <select id="propertyType">
+                        <option value="">Property Type</option>
+                        <option value="residential">Residential</option>
+                        <option value="commercial">Commercial</option>
+                        <option value="industrial">Industrial</option>
+                        <option value="land">Land</option>
+                    </select>
+                    <input type="number" id="propertyValue" placeholder="Property Value ($)">
+                </div>
+                
+                <input type="date" id="caseDeadline" placeholder="Deadline">
+                
+                <button type="submit" class="btn-primary">Post Case</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="chatbot" class="chatbot-widget">
+        <div class="chatbot-toggle" onclick="toggleChatbot()">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="chatbot-container">
+            <div class="chatbot-header">
+                <i class="fas fa-robot"></i>
+                <span>Legal Assistant</span>
+                <button onclick="toggleChatbot()" class="close-chat">×</button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages"></div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Ask me anything...">
+                <button onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/enhanced-chatbot.js"></script>
+    <script src="js/features.js"></script>
+</body>
+</html>
